@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'raffle/index'
+  resources :entries, defaults: { format: 'json' }
 
   root to: "raffle#index"
 end
