@@ -1,6 +1,9 @@
 app = angular.module("Raffler", ["ngResource"])
-@RaffleCtrl = ($scope, $resource) ->
-  Entry = $resource("/entries/:id", {id: "@id"}, {update: {method: "PUT"}})
+
+app.factory "Entry", ($resource) ->
+  $resource("/entries/:id", {id: "@id"}, {update: {method: "PUT"}})
+
+@RaffleCtrl = ($scope, Entry) ->
 
   $scope.entries = Entry.query()
 
